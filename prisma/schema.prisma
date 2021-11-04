@@ -1,0 +1,40 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("SHOPPAD_DATABASE_URL")
+}
+
+model Tokens {
+  id                BigInt              @id @default(autoincrement())
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  token             String?             @db.VarChar(120)
+  userId            BigInt              @db.BigInt
+  validade          DateTime            @db.DateTime
+}
+
+model ProdutosCompras {
+  id                Int                 @id
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  codprod           String              @db.VarChar(30)
+  nmprod            String              @db.VarChar(120)
+  dtultvendimp      DateTime            @db.Date
+  dtalteracao       DateTime            @db.Date
+  dtultcompimp      DateTime?           @db.Date
+  custoinformado    Decimal             @default(0) @db.Decimal(17,6)
+  custoreposicao    Decimal             @default(0) @db.Decimal(17,6)
+  custoultcompra    Decimal             @default(0) @db.Decimal(17,6)
+  customedio        Decimal             @default(0) @db.Decimal(17,6)
+  un_pad            String              @db.VarChar(30)                   
+  uc_unid           String?             @db.VarChar(30)       
+  uc_qdade          Decimal?            @db.Decimal(17,6)
+  uc_cnpj           String?             @db.VarChar(30)
+  uc_fantasia       String?             @db.VarChar(120)
+  uc_entrada        DateTime?           @db.Date
+  uc_nf             String?             @db.VarChar(30)
+}
