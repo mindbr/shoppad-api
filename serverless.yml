@@ -14,30 +14,18 @@ functions:
       - http:
           method: GET
           path: /
-  seed:
-    handler: handlers/seed.handler
+  getProdutosCompras:
+    handler: handlers/produtos-compras/get-produtos-compras.handler
     events:
       - http:
           method: GET
-          path: /seed
-  getUsers:
-    handler: handlers/users.handler
-    events:
-      - http:
-          method: GET
-          path: /users
-  createUser:
-    handler: handlers/create-user.handler
+          path: /produtos-compras
+  postProdutosCompras:
+    handler: handlers/produtos-compras/post-produtos-compras.handler
     events:
       - http:
           method: POST
-          path: /users
-  getPosts:
-    handler: handlers/posts.handler
-    events:
-      - http:
-          method: GET
-          path: /posts
+          path: /produtos-compras
 
 # only include the Prisma binary required on AWS Lambda while packaging
 package:

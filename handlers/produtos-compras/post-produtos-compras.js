@@ -76,7 +76,7 @@ exports.handler = async (event, context, callback) => {
             statusCode: 409,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                error: 'A user with this email already exists'
+                error: 'Registro já existe.'
             })  
             }
         }
